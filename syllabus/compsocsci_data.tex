@@ -1,0 +1,570 @@
+\documentclass[11pt]{article}
+
+  % Package declarations
+  \usepackage{advdate}% http://ctan.org/pkg/advdate
+  \usepackage{amsmath}
+  \usepackage{array}
+  \usepackage{color}
+  \usepackage[mmddyyyy]{datetime}% http://ctan.org/pkg/datetime
+  \usepackage{fancyhdr}
+  \usepackage{float}
+  \usepackage[T1]{fontenc}
+  \usepackage{fullpage}
+  \usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+  \usepackage{graphicx}
+  \usepackage{hyperref}
+  \usepackage{lastpage}
+  \usepackage{layout}
+  \usepackage[sc]{mathpazo}
+  \usepackage{multicol}
+  \usepackage{setspace}
+  \usepackage{url}
+  \usepackage{xcolor}
+
+  % Layout settings
+  \pagestyle{fancy}
+  \linespread{1.05} % Palatino needs more leading (space between lines)
+  \definecolor{nyupurple}{HTML}{57068C}
+  \hypersetup{colorlinks,breaklinks,linkcolor=nyupurple,urlcolor=nyupurple,anchorcolor=nyupurple,citecolor=black}
+
+  % New commands and modifications
+  \newcommand{\blankline}{\quad\pagebreak[2]}
+  \newdateformat{syldate}{\twodigit{\THEMONTH}/\twodigit{\THEDAY}}
+  \newsavebox{\MONDAY}\savebox{\MONDAY}{Mon}% Mon
+  \newcommand{\week}[1]{%
+    \paragraph*{\kern-2ex\quad #1, \syldate{\today} - \AdvanceDate[4]\syldate{\today}:}% Set heading  \quad #1
+    \ifdim\wd1=\wd\MONDAY
+      \AdvanceDate[7]
+    \else
+      \AdvanceDate[7]
+    \fi%
+  }
+
+  \newcommand{\module}[1]{%
+    \paragraph*{\kern-2ex\quad #1:}
+  }
+
+
+  % MODIFY: Document header and footer
+  \lhead{}
+  \chead{}
+  \rhead{\footnotesize Computational Social Science}
+  \lfoot{}
+  \cfoot{\small \thepage/\pageref*{LastPage}}
+  \rfoot{}
+
+  % MODIFY: The course title and professor
+  \title{Data Skills for Computational Social Science}
+  \author{Chase Coleman, Spencer Lyon, and Thomas Sargent}
+  \date{Fall 2021}
+
+
+\begin{document}
+
+\maketitle
+
+\blankline
+
+\begin{tabular*}{.93\textwidth}{@{\extracolsep{\fill}}lr}
+
+  % Modify information %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  E-mail: \texttt{cc7768@gmail.com} & Web: \href{http://www.chasegcoleman.com}{\tt\bf http://www.chasegcoleman.com}  \\
+  E-mail: \texttt{spencerlyon2@gmail.com} & Web: \href{http://www.spencerlyon.com}{\tt\bf http://www.spencerlyon.com}  \\
+  E-mail: \texttt{ts43@nyu.edu} & Web: \href{http://www.tomsargent.com/}{\tt\bf http://www.tomsargent.com/}  \\
+
+  Office Hours: By appointment  &  Class Hours: Thursday 18:00-20:50 \\
+
+  \hline
+
+\end{tabular*}
+
+\vspace{5 mm}
+
+
+%
+% Course description
+%
+\section*{Course Description}
+
+  This course teaches the foundational skills necessary to do modern data
+  analytics using the Python programming language. We assume that students have
+  previously worked with Python. We will add to existing Python skills and teach
+  the core scientific and data-specific libraries (numpy, scipy, matplotlib, and
+  pandas). We will use these skills to analyze a variety of social science
+  datasets and answer research and business questions.
+
+%
+% Course materials
+%
+\section*{Course Materials}
+
+  \begin{itemize}
+    \item {\bf QuantEcon Datascience} Lectures from the QuantEcon datascience
+    sequence at \newline\href{https://datascience.quantecon.org}{\tt\bf
+    https://datascience.quantecon.org}
+    \item {\bf Python Data Science Handbook} by Jake Vanderplas\newline\href{https://jakevdp.github.io/PythonDataScienceHandbook/}{\tt\bf https://jakevdp.github.io/PythonDataScienceHandbook/}
+    \item {\bf Python for Data Analysis, 2nd Edition} by Wes McKinney
+  \end{itemize}
+
+
+%
+% Prerequisites
+%
+\section*{Prerequisites}
+
+  Students should have prior experience using the Python programming language
+  before starting this course. Ideally, students will have completed the Summer
+  "Pre-Course" that teaches these skills. Throughout this course we will
+  leverage programming skills such as control flow constructs (\texttt{if/else},
+  \texttt{for/while}), defining custom functions (\texttt{def}), and finding
+  help on existing functions (\texttt{?} in Jupyter environments and
+  \texttt{help} elsewhere).
+
+  \bigskip
+
+  \noindent Althoughy a course in probability or statistics is not a prerequisite, students will
+  find some knowledge of these topics to be helpful.
+
+  \bigskip
+
+  \noindent Students are required to have access to a personal computer (laptop)
+  that can be brought with them to lectures. Computers will be used by students
+  in each class session and those without a laptop will not get the necessary
+  in-class practice in order to master the concepts we study.
+
+%
+% Course objectives
+%
+\section*{Course Objectives}
+
+  The key objective in this course is for students to use Python to do
+  meaningful data analysis using social science data sets. Success in this
+  course can be described as the student's ability to do the following:
+
+  \begin{itemize}
+    \item Read, write, and understand basic programs written in the Python
+    programming language
+    \item Import, clean, combine, and summarize datasets from a variety of sources
+    \item Construct informative visualizations of raw data and model results
+    \item Implement basic data engineering best practices such as optimizing
+    organization and structure of datasets, using effective storage formats for
+    a given task, and automating repetitive extract-transform-load (ETL)
+    processes
+  \end{itemize}
+
+%
+% Course structure
+%
+\section*{Course Structure}
+
+  \subsection*{Class Structure}
+
+    This course will meet once a week for 3 hours.
+
+    \bigskip
+
+    \noindent Class will be treated as a mixture of lecture time and lab time.
+    Students should bring, and expect to use, their laptops every time the class
+    meets.
+
+
+  \subsection*{Assessments}
+
+    This course will use a mixture of homework assignments, in-class quizzes,
+    exams, and a final project to evaluate students.
+
+    \bigskip
+
+    \noindent \textbf{Homework}:  At the beginning of the course, homework  will
+    be assigned almost every week. Later in the course, there will be less
+    frequent assignments in order to assure that you have time to work on your
+    class project. Your two lowest homework grades will be dropped.
+
+    \noindent \textbf{In-class participation}: As the class will be offered virtually,
+    being an active participant in lectures and discussion requires effort. We recognize
+    and appreciate this effort and will reward it accordingly.
+
+    \noindent \textbf{Exams}: There will be 1 take-home exam.
+
+    \noindent \textbf{Project}: There will be a class project aimed at helping
+    you apply the tools that you have learned to a ``real-world problem.''
+
+    \vspace{5mm}
+
+    \noindent Other than for the exam, we highly encourage students to
+    work together. We have found that groups of 3-4 seem to work best. We
+    believe that collaborative work is the best way to learn the type of
+    material that we cover.  We advise  students not to rely on others to do
+    work that you do not understand.
+
+
+  \subsection*{Grading Policy}
+
+    The assignments just described will be the main inputs to the grade for the
+    course. Assignments will be weighted evenly within groups and overall
+    according to the following decision rule:
+
+    \begin{itemize}
+      \item Homework assignments: 25\%
+      \item In-class participation: 15\%
+      \item Tests: 20\%
+      \item Project: 40\%
+    \end{itemize}
+
+    \noindent This weighting reflects our opinion that the most important skills
+    to be  acquired in this class are communicated by one's ability successfully
+    to apply the tools that you learn to an interesting question in the social
+    sciences.
+
+%
+% Course schedule
+%
+\newpage
+\section*{Schedule and weekly learning goals}
+
+  The schedule is tentative and subject to change. Several of the modules below will occupy more than one week.  The learning goals target
+  key concepts to be mastered after each module. Successive modules build on early modules.
+
+  \module{Part 1} Introduction to Pandas
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item \texttt{pandas package:} \url{https://pandas.pydata.org/}
+    \item \url{https://python.quantecon.org/pandas.html}
+    \item \url{https://datascience.quantecon.org/pandas/intro.html}
+    \item \texttt{pandas.DataFrame}
+    \item \texttt{pandas.Series}
+    \item Chapter 5 of Python for Data Analysis
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Pandas datatypes: DataFrame and Series
+    \item Basic operations with DataFrames: summary statistics, aggregations,
+    transformations, data selection
+    \item Sorting and ranking
+    \item Value counts
+    \item Function application and mapping
+    \item Duplicate labels
+    \item Basic visualization using the \texttt{plot} method
+  \end{itemize}
+
+  \module{Part 2} Organizing Data With Pandas, I
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item \texttt{pandas.Index}
+    \item \url{https://datascience.quantecon.org/pandas/the_index.html}
+    \item \url{https://datascience.quantecon.org/pandas/storage_formats.html}
+    \item Chapter 6 of Python for Data Analysis
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Understanding the \texttt{Index} in pandas
+    \item Storage formats
+    \item Reindexing
+    \item Stacking and melting
+    \item Hierarchical indexing
+  \end{itemize}
+
+  \module{Part 3} Organizing Data With Pandas, II
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item \url{https://datascience.quantecon.org/pandas/data_clean.html}
+    \item \url{https://datascience.quantecon.org/pandas/reshape.html}
+    \item Chapter 7 and 8 of Python for Data Analysis
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Cleaning, reshaping, and merging datasets
+    \item \texttt{merge}, \texttt{join} and \texttt{combine}
+    \item Stacking and melting
+    \item Handling missing data
+    \item Discretization and binning
+    \item Random sampling
+    \item String manipulation
+  \end{itemize}
+
+  \module{Part 4} Grouped Operations with Pandas, I
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item \texttt{pandas.groupby}
+    \item \url{https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#}
+    \item \url{https://datascience.quantecon.org/pandas/groupby.html}
+    \item Chapter 10 of Python for Data Analysis
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item \texttt{groupby} method with built-in methods
+    \item Groupby mechanics
+    \item Custom grouped functions
+  \end{itemize}
+
+  \module{Part 5} Grouped Operations with Pandas, II
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item \texttt{pandas.groupby}
+    \item \url{https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#}
+    \item \url{https://datascience.quantecon.org/pandas/groupby.html}
+    \item Chapter 10  of Python for Data Analysis
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Aggregation with multiple function application
+    \item General split-apply-combine
+    \item \texttt{transform}
+    \item \texttt{apply}
+  \end{itemize}
+
+  \module{Part 6} Grouped Operations with Pandas, III
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item \url{https://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#}
+    \item \url{https://datascience.quantecon.org/pandas/groupby.html}
+    \item Chapter 12 of Python for Data Analysis
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Pivot tables and cross-tabulation
+    \item Method chaining with \texttt{pipe}
+    \item Categorical data
+  \end{itemize}
+
+  \module{Part 7} Time Series with Pandas, I
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item \url{https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html}
+    \item \url{https://datascience.quantecon.org/pandas/timeseries.html}
+    \item Chapter 11 of Python for Data Analysis
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Rolling-window operations
+    \item Resampling frequency of observations
+    \item Doing arithmetic with dates, date ranges, periods, and TimeDeltas
+  \end{itemize}
+
+  \module{Part 8} Time Series with Pandas, II
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item \url{https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html}
+    \item \url{https://datascience.quantecon.org/pandas/timeseries.html}
+    \item Chapter 11 of Python for Data Analysis
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Upsampling and interpolation
+    \item Downsampling
+    \item Handling time zones
+  \end{itemize}
+
+  \module{Part 9} Data Visualization, I
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item \url{https://datascience.quantecon.org/pandas/matplotlib.html}
+    \item \url{https://seaborn.pydata.org/}
+    \item \url{https://plot.ly/python/}
+    \item \url{https://altair-viz.github.io/}
+    \item Chapter 9 of Python for Data Analysis
+    \item \url{https://datascience.quantecon.org/applications/maps.html}
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Intermediate \texttt{matplotlib}
+    \item Statistical visualization with \texttt{seaborn}
+    \item Widgets
+  \end{itemize}
+
+  \module{Part 10} Data Visualization, II
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item Chapter 9 of Python for Data Analysis
+    \item \url{https://datascience.quantecon.org/applications/maps.html}
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Interactive web-based visualizations, and dashboards using \texttt{plotly} and
+      \texttt{altair} --- As an example of what could be done, see
+      \href{https://www.waugheconomics.com/trade-war-map.html}{Mike Waugh's webpage}
+  \end{itemize}
+
+  \module{Part 11} Data Harvesting
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item \url{https://scrapy.org/}
+    \item \url{https://camelot-py.readthedocs.io/en/master/}
+    \item \url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Integrating with Web APIs
+    \item Scraping data from websites without an api (\texttt{scrapy})
+    \item Extracting data from PDFs (\texttt{camelot})
+    % TODO: Application is getting data on inequality etc...
+  \end{itemize}
+
+  \module{Part 12} Data Engineering
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item Class notes
+    \item \url{https://airflow.apache.org/}
+    \item \url{https://www.sqlalchemy.org/}
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Basic introduction to databases (using SQLite through \texttt{sqlalchemy})
+    \item Automation and data pipelines using Apache Airflow
+    \item We will illustrate these tools by creating an automatically updating database on one of
+      a few potential topics. Our choice of topic will depend on class interest.
+  \end{itemize}
+
+  \module{Part 13} Case studies, I
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item \url{http://www.tomsargent.com/research/ReadMe_Pub.pdf}
+    \item \url{https://datascience.quantecon.org/applications/}
+    \item Chapter 14 of Python for Data Analysis
+    \item \url{https://datascience.quantecon.org/applications/recidivism.html}
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Combine the tools learned in this class to generate automatically updated databases
+      and visualizations, covering topics such as
+    \begin{itemize}
+      \item Inequality data
+      \item U.S. bond data and term structure of interest rates; see Hall, Payne, Sargent bond
+        dataset
+    \end{itemize}
+  \end{itemize}
+
+  \module{Part 14} Case studies, II
+
+  \bigskip
+
+  {\bf Sources and tools:}
+  \begin{itemize}
+    \item \url{https://datascience.quantecon.org/applications/}
+    \item Chapter 14 of Python for Data Analysis
+  \end{itemize}
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Examples from
+      \href{https://www.hup.harvard.edu/catalog.php?isbn=9780674237544}{\textit{The Great Reversal}}
+      by Thomas Phillipon
+  \end{itemize}
+
+  \module{Part  15} Case studies, III
+
+  \bigskip
+
+  {\bf Topics to be mastered:}
+  \begin{itemize}
+    \item Student presentations of class projects
+  \end{itemize}
+
+% Set first date of the semester (for some reason this is a week before what comes up, but that's easy to get around)
+% \SetDate[06/01/2020]
+% \week{Week 01} Jupyter Notebook, {\bf LS, chap.~6}
+% \begin{itemize}
+% \item Bellman equations
+% \item McCall search model
+% \end{itemize}
+
+% \week{Week 02} Time Series {\bf LS, chap.~2}
+% \begin{itemize}
+% \item Markov chains
+% \item Linear State Space models
+% \end{itemize}
+
+% Add a figure %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{figure*}
+%\includegraphics[width=1.3\textwidth,angle=90]{Concept_map_315.pdf}
+%\end{figure*}
+
+
+\newpage
+\section*{Course Policies}
+
+\subsection*{Professional Behavior}
+
+\footnotesize{
+  Attend class. They say ``eighty percent of success is just showing up.'' We have found that
+  those who show up perform systematically better.
+}
+
+\footnotesize{
+  Arrive to class on time and stay until the end of class. Chronically arriving late or leaving
+  class early is unprofessional and disruptive to the rest of the class.
+}
+
+\footnotesize{
+  We understand that the electronic recording of notes will be important for class and
+  so computers will be allowed in class. Please refrain from using computers for anything but
+  activities related to the class. Phones are prohibited as they are rarely useful for anything in
+  the course. Eating and drinking are allowed in class but please refrain from it affecting the
+  course. Try not to eat your lunch in class as the classes are typically active.
+}
+
+\end{document}
