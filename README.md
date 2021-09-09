@@ -18,4 +18,4 @@ Other resources:
 
 ## Week 2: 2021-09-09
 
-- Study notebooks [notebooks/p02_organizing_data_with_pandas_1](./notebooks/p02_organizing_data_with_pandas_1)
+- Study notebooks [notebooks/p02_organizing_data_with_pandas_1](./notebooks/p02_organizing_data_with_pandas_1) and [notebooks/p03_organizing_data_with_pandas_2](./notebooks/p03_organizing_data_with_pandas_2)
