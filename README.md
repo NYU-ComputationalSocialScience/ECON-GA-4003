@@ -22,3 +22,10 @@ Other resources:
   - [notebooks/p02_organizing_data_with_pandas_1/01_the_index.ipynb](./notebooks/p02_organizing_data_with_pandas_1/01_the_index.ipynb) 
   - [notebooks/p03_organizing_data_with_pandas_2/v1_pandas_data_clean.ipynb](./notebooks/p03_organizing_data_with_pandas_2/v1_pandas_data_clean.ipynb)
 - Homework 1 was assigned -- see brightspace for more details
+
+## Week 4: 2021-09-23
+
+- Study notebooks
+  - [notebooks/p04_pandas_review/01_pandas_review_movieLens.ipynb](./notebooks/p04_pandas_review/01_pandas_review_movieLens) 
+  - [notebooks/p04_pandas_review/01_pandas_review_population.ipynb](./notebooks/p04_pandas_review/01_pandas_review_population) 
+  - [notebooks/p05_pandas_review/01_groupby.ipynb](./notebooks/p05_pandas_review/01_groupby.ipynb)
