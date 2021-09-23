@@ -18,4 +18,7 @@ Other resources:
 
 ## Week 2: 2021-09-09
 
-- Study notebooks [notebooks/p02_organizing_data_with_pandas_1](./notebooks/p02_organizing_data_with_pandas_1) and [notebooks/p03_organizing_data_with_pandas_2](./notebooks/p03_organizing_data_with_pandas_2)
+- Study notebooks
+  - [notebooks/p02_organizing_data_with_pandas_1/01_the_index.ipynb](./notebooks/p02_organizing_data_with_pandas_1/01_the_index.ipynb) 
+  - [notebooks/p03_organizing_data_with_pandas_2/v1_pandas_data_clean.ipynb](./notebooks/p03_organizing_data_with_pandas_2/v1_pandas_data_clean.ipynb)
+- Homework 1 was assigned -- see brightspace for more details
