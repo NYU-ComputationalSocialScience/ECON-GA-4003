@@ -19,13 +19,35 @@ Other resources:
 ## Week 2: 2021-09-09
 
 - Study notebooks
-  - [notebooks/p02_organizing_data_with_pandas_1/01_the_index.ipynb](./notebooks/p02_organizing_data_with_pandas_1/01_the_index.ipynb) 
+  - [notebooks/p02_organizing_data_with_pandas_1/01_the_index.ipynb](./notebooks/p02_organizing_data_with_pandas_1/01_the_index.ipynb)
   - [notebooks/p03_organizing_data_with_pandas_2/v1_pandas_data_clean.ipynb](./notebooks/p03_organizing_data_with_pandas_2/v1_pandas_data_clean.ipynb)
 - Homework 1 was assigned -- see brightspace for more details
 
+## Week 3: 2021-09-16
+
+- Study notebooks in the `p03_organizing_data_with_pandas_2` directory
+
 ## Week 4: 2021-09-23
 
+- Study notebooks in the `p04_pandas_review` directory and `p05_groupby` directories
+
 - Study notebooks
-  - [notebooks/p04_pandas_review/01_pandas_review_movieLens.ipynb](./notebooks/p04_pandas_review/01_pandas_review_movieLens) 
-  - [notebooks/p04_pandas_review/01_pandas_review_population.ipynb](./notebooks/p04_pandas_review/01_pandas_review_population) 
-  - [notebooks/p05_pandas_review/01_groupby.ipynb](./notebooks/p05_pandas_review/01_groupby.ipynb)
+  - [notebooks/p04_pandas_review/01_pandas_review_movieLens.ipynb](./notebooks/p04_pandas_review/01_pandas_review_movieLens)
+  - [notebooks/p04_pandas_review/01_pandas_review_population.ipynb](./notebooks/p04_pandas_review/01_pandas_review_population)
+  - [notebooks/p05_groupby/01_groupby.ipynb](./notebooks/p05_groupby/01_groupby.ipynb)
+
+## Week 5: 2021-09-30
+
+- Study notebooks in the `p06_apis` directory
+
+## Week 6: 2021-10-07
+
+- Study notebooks in `p07_plotting`
+
+## Week 7: 2021-10-14
+
+- Study notebooks in `p08_sql`
+
+## Week 8: 2021-10-21
+
+- Study notebooks in `p09_timeseries_data_with_pandas` AND `p10_markov_chains`
