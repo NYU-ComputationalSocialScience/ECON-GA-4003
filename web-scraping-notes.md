@@ -26,3 +26,5 @@ In 2019 the Supreme Court ruled that web scraping of non-copywrited, publically 
     - [Ycombinator](https://www.ycombinator.com)
   - Other
     - [Pokemon](https://pokemondb.net)
+  - Movies
+    - [ImDb](https://www.imdb.com/)
